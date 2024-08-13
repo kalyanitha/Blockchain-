@@ -1,0 +1,192 @@
+WHILE LOOP
+pragma solidity ^0.5.0;
+// Creating a contract
+contract DoWhile {
+// Declaring a dynamic array
+uint256[] data;
+// Declaring state variable
+uint8 j = 0;
+// Defining function to demonstrate
+// &#39;Do-While loop&#39;
+function loop() public returns (uint256[] memory) {
+do {
+j++;
+data.push(j);
+} while (j 5);
+return data;
+}
+function display() public view returns(uint256[] memory){
+return data;
+}
+
+
+
+
+
+ENUMS
+pragma solidity ^0.5.0;
+contract enumdemo {
+enum week_days {
+Monday,
+Tuesday,
+Wednesday,
+Thursday,
+Friday,
+Saturday,
+Sunday
+}
+week_days week;
+week_days choice;
+week_days constant default_value = week_days.Sunday;
+function set_value() public {
+choice = week_days.Tuesday;
+}
+function get_choice() public view returns (week_days) {
+return choice;
+}
+function get_defaultvalue() public view returns (week_days) {
+return default_value;
+}
+}
+
+
+
+STRUCT
+pragma solidity ^0.5.0;
+contract structdemo {
+struct Book {
+string name;
+string author;
+uint256 id;
+bool availability;
+}
+Book book2;
+Book book1 = Book(&quot;A Little Life&quot;, &quot;Hanya Yanagihara&quot;, 2, false);
+function set_details() public {
+book2 = Book(&quot;Almond&quot;, &quot;Sohn won-pyung&quot;, 1, true);
+}
+function book_info()
+public
+view
+returns (
+string memory,
+string memory,
+uint256,
+bool
+)
+{
+return (book1.name, book1.author, book1.id, book1.availability);
+}
+function get_details()
+public
+view
+returns (
+string memory, string memory, uint256, bool
+)
+{
+return (book2.name, book2.author, book2.id, book2.availability);
+}
+}
+
+
+
+
+
+MAPPING
+
+pragma solidity ^0.5.0;
+contract LedgerBalance {
+mapping(address =&gt; uint256) public balances;
+function updateBalance(uint256 newBalance) public {
+balances[msg.sender] = newBalance;
+}
+}
+contract Updater {
+function updateBalance() public returns (uint256) {
+LedgerBalance ledgerBalance = new LedgerBalance();
+return ledgerBalance.balances(address(this));
+}
+}
+
+
+
+CONVERSION
+pragma solidity ^0.8.0;
+contract ImplicitConversion {
+function add() public pure returns (uint256) {
+uint256 a = 10;
+uint256 b = 20;
+return a + b;
+}
+}
+contract ExplicitConversion {
+function convert() public pure returns (bytes memory) {
+string memory str = &quot;Hello World&quot;;
+bytes memory b = bytes(str);
+return b;
+}
+}
+
+
+
+ETHER UNITS
+pragma solidity ^0.8.0;
+contract SolidityTest {
+function convert_Amount_to_Wei(uint256 Amount)
+public
+pure
+returns (uint256)
+{
+return Amount * 1 wei;
+}
+function convert_Amount_To_Ether(uint256 Amount)
+public
+pure
+returns (uint256)
+{
+return Amount * 1 ether;
+}
+function convert_Amount_To_Gwei(uint256 Amount)
+public
+pure
+returns (uint256)
+{
+return Amount * 1 gwei;
+}
+function convert_seconds_To_mins(uint256 _seconds)
+public
+pure
+returns (uint256)
+{
+return _seconds / 60;
+}
+function convert_seconds_To_Hours(uint256 _seconds)
+public
+pure
+returns (uint256)
+{
+return _seconds / 3600;
+}
+function convert_Mins_To_Seconds(uint256 _mins)
+public
+pure
+returns (uint256)
+{
+return _mins * 60;
+}
+}
+
+
+
+
+SPECIAL VARIABLE
+pragma solidity ^0.8.0;
+contract Special_Variables {
+mapping(address =&gt; uint256) rollNo;
+function setRollNO(uint256 _myNumber) public {
+rollNo[msg.sender] = _myNumber;
+}
+function whatIsMyRollNumber() public view returns (uint256) {
+return rollNo[msg.sender];
+}
+}
