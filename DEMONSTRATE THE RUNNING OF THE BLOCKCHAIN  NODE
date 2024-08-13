@@ -1,0 +1,23 @@
+Create a folder named ethermine and a JSON file named genesis.json Step 2-&gt; Run command geth account new –datadir
+
+C:\Users\Achsah\Documents\MScIT\sem4\blockchain_practical\ethermine
+testnet-blockchainand write the following lines in it.
+
+Step 3-&gt; Run command geth account new --datadir
+C:\Users\Achsah\Documents\MScIT\sem4\blockchain_practical\ethermine
+
+Step 4-&gt; Run command geth --identity &quot;localB&quot; --http --http.port &quot;8280&quot;
+--http.corsdomain &quot;*&quot; --http.api &quot;db,eth,net,web3&quot; --datadir
+&quot;C:\Users\Achsah\Documents\MScIT\sem4\blockchain_practical\ethermine&quot;
+--port &quot;30303&quot; --nodiscover --networkid 5777 console. This command will
+enable geth console.
+
+Step 5-&gt; Run the commandminer.setEtherbase(&#39;0xC050FE4d9bAc591d29538e2FD9cCA848B29489D0’) in the geth console
+
+Step 6-&gt; Run the command miner.start() to start mining
+
+Step 7-&gt; Below screenshots are the mining processes running on your local machine.
+
+Step 8-&gt; To stop the mining press Ctrl+D
+
+
