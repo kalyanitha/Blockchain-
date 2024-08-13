@@ -60,3 +60,18 @@ emit Increment(msg.sender);
 value = _a + _b;
 }
 }
+
+
+
+
+4) Error Handling
+
+SIES(Nerul) College of Arts, Science and Commerce
+contract ErrorDemo {
+function getSum(uint256 a, uint256 b) public pure returns (uint256) {
+uint256 sum = a + b;
+// require(sum &lt; 255, &quot;Invalid&quot;);
+assert(sum&lt;255);
+return sum;
+}
+}
