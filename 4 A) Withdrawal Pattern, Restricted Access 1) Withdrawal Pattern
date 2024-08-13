@@ -1,0 +1,66 @@
+1) Withdrawal Pattern
+
+pragma solidity 0.8.18;
+contract WithdrawalPattern {
+address public owner;
+uint256 public lockedbalance;
+uint256 public withdrawablebalance;
+constructor() {
+owner = msg.sender;
+}
+modifier onlyowner() {
+require(msg.sender == owner, &quot;Only the owner can call this function&quot;);
+_;
+}
+function deposit(uint256 amount) public payable {
+require(amount &gt; 0, &quot;Amount must be greater than zero&quot;);
+lockedbalance += amount;
+}
+function withdraw(uint256 amount) public payable onlyowner {
+require(
+amount &lt;= withdrawablebalance,
+&quot;Insufficient withdrawable balance&quot;
+);
+withdrawablebalance -= amount;
+payable(msg.sender).transfer(amount);
+}
+function unlock(uint256 amount) public onlyowner {
+require(amount &lt;= lockedbalance, &quot;Insufficient locked balance&quot;);
+lockedbalance -= amount;
+withdrawablebalance += amount;
+}
+}
+
+
+2) Restricted Access
+
+pragma solidity ^0.8.18;
+contract RestrictedAccess {
+address public owner = msg.sender;
+uint256 public creationTime = block.timestamp;
+modifier onlyBy(address _account) {
+require(msg.sender == _account, &quot;Sender not authorized!&quot;);
+_;
+}
+modifier onlyAfter(uint256 _time) {
+require(block.timestamp &gt;= _time, &quot;Function was called too early!&quot;);
+_;
+}
+modifier costs(uint256 _amount) {
+require(msg.value &gt;= _amount, &quot;Not enough Ether provided!&quot;);
+_;
+}
+function forceOwnerChange(address _newOwner)
+public
+payable
+costs(200 ether)
+{
+owner = _newOwner;
+}
+function changeOwner(address _owner) public onlyBy(owner) {
+owner = _owner;
+}
+function disown() public onlyBy(owner) onlyAfter(creationTime + 3 weeks) {
+delete owner;
+}
+}
