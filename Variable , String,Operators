@@ -1,0 +1,53 @@
+1. TO EXECUTE SOLIDITY SCRIPTS GO TO -&gt;HTTPS://REMIX.ETHEREUM
+VARIABLE
+
+pragma solidity ^0.5.0;
+contract variable_demo {
+uint256 sum = 4; //state variable
+uint256 x;
+address a;
+string s = "welcome";
+function add(uint256) public {
+uint256 y = 2; //local variable sum = sum+x+y:
+sum = sum + x + y;
+}
+function display() public view returns (uint256) {
+return sum;
+}
+function displayMsg() public view returns (string memory) {
+return s;
+}
+}
+
+
+
+STRING
+ragma solidity ^0.5.0;
+contract LearningStrings {
+string text;
+function getText() public view returns (string memory) {
+return text;
+}
+function setText() public {
+text = "hello";
+}
+function setTextByPassing(string memory message) public {
+text = message;
+}
+}
+
+
+OPERATORS
+
+pragma solidity ^ 0.5.0;
+contract SolidityTest {
+uint16 public a = 20;
+uint16 public b = 10;
+uint256 public sum = a + b;
+uint256 public diff = a - b;
+uint256 public mul = a * b;
+uint256 public div = a / b;
+uint256 public mod = a % b;
+uint256 public dec = --b;
+uint256 public inc = ++a;
+}
