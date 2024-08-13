@@ -1,0 +1,129 @@
+1. View Functions
+
+pragma solidity ^0.5.0;
+contract view_demo {
+uint256 num1 = 2;
+uint256 num2 = 4;
+function getResult() public view returns (uint256 product, uint256 sum) {
+product = num1 * num2;
+sum = num1 + num2;
+}
+}
+
+
+2. Pure Functions
+
+pragma solidity ^0.5.0;
+contract pure_demo {
+function getResult() public pure returns (uint256 product, uint256 sum) {
+uint256 num1 = 2;
+uint256 num2 = 4;
+product = num1 * num2;
+sum = num1 + num2;
+}
+}
+
+3. Mathematical Functions
+
+pragma solidity ^0.5.0;
+contract Test{
+function CallAddMod() public pure returns(uint){
+return addmod(7,3,3);
+}
+function CallMulMod() public pure returns(uint){
+return mulmod(7,3,3);
+}
+}
+
+4. Cryptographic Functions
+
+pragma solidity ^0.5.0;
+contract Test{
+function callKeccak256() public pure returns(bytes32 result){
+return keccak256(&quot;BLOCKCHAIN&quot;);
+}
+function callsha256() public pure returns(bytes32 result){
+return sha256(&quot;BLOCKCHAIN&quot;);
+}
+function callripemd() public pure returns (bytes20 result){
+return ripemd160(&quot;BLOCKCHAIN&quot;);
+}
+}
+
+
+5.Functions
+
+pragma solidity &gt;=0.4.22 &lt;0.9.0;
+contract Test {
+function return_example()
+public
+pure
+returns (
+uint256,
+uint256,
+uint256,
+string memory
+)
+{
+uint256 num1 = 10;
+uint256 num2 = 16;
+uint256 sum = num1 + num2;
+uint256 prod = num1 * num2;
+uint256 diff = num2 - num1;
+string memory message = &quot;Multiple return values&quot;;
+return (sum, prod, diff, message);
+}
+}
+
+6. Fallback Function
+
+pragma solidity ^0.5.12;
+contract A {
+uint256 n;
+function set(uint256 value) external {
+n = value;
+}
+function() external payable {
+n = 0;
+}
+}
+contract example {
+function callA(A a) public returns (bool) {
+(bool success, ) = address(a).call(abi.encodeWithSignature(&quot;setter()&quot;));
+require(success);
+address payable payableA = address(uint160(address(a)));
+return (payableA.send(2 ether));
+}
+}
+
+
+7. Function Overloading
+pragma solidity ^0.8.0;
+contract OverloadingExample {
+function add(uint256 a, uint256 b) public pure returns (uint256) {
+return a + b;
+}
+function add(string memory a, string memory b)
+public
+pure
+returns (string memory)
+{
+return string(abi.encodePacked(a, b));
+}
+}
+
+
+8. Function modifiers
+
+pragma solidity ^0.5.0;
+contract ExampleContract {
+address public owner = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+uint256 public counter;
+modifier onlyowner() {
+require(msg.sender == owner, &quot;Only the contract owner can call&quot;);
+_;
+}
+function incrementcounter() public onlyowner {
+counter++;
+}
+}
