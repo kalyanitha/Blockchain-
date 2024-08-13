@@ -1,0 +1,55 @@
+ARRAY
+pragma solidity ^0.5.0;
+contract arraydemo
+{
+//Static Array
+uint[6] arr2=[10,20,30];
+function dispstaticarray() public view returns(uint[6] memory)
+{
+return arr2;
+}
+//Dynamic Array
+uint x=5;
+uint [] arr1;
+function arrayDemo() public
+{
+while(x>0)
+{
+arr1.push(x);
+x=x-1;
+}
+
+DECISION MAKING 
+pragma solidity ^0.5.0;
+contract ifelsedemo
+{
+uint i=10;
+function decision_making() public view returns(string memory)
+{
+if(i%2==0)
+{
+return "even";
+}
+else
+{
+return "Odd";
+}
+}
+}
+
+
+LOOPS
+pragma solidity ^0.5.0;
+contract loopDemo {
+uint [] data;
+
+function forDemo() public returns(uint[] memory) {
+for(uint i=0; i<10; i++){
+data.push(i);
+}
+return data;
+}
+function disp() public view returns(uint[] memory) {
+return data;
+}
+}
