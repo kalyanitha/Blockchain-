@@ -1,0 +1,62 @@
+1) Libraries
+myLib.sol Code
+
+pragma solidity &gt;=0.7.0 &lt;0.9.0;
+library myMathLib {
+function sum(uint256 a, uint256 b) public pure returns (uint256) {
+return a + b;
+}
+function exponent(uint256 a, uint256 b) public pure returns (uint256) {
+return a**b;
+}
+}
+C) Libraries, Assembly, Events, Error handling.
+1) Libraries
+myLib.sol Code
+
+using_library.sol Code
+// SPDX-License-Identifier: MIT
+pragma solidity &gt;=0.7.0 &lt;0.9.0;
+import &quot;contracts/myLIB.sol&quot;;
+contract UseLib {
+function getsum(uint256 x, uint256 y) public pure returns (uint256) {
+return myMathLib.sum(x, y);
+}
+function getexponent(uint256 x, uint256 y) public pure returns (uint256) {
+return myMathLib.exponent(x, y);
+}
+}
+
+20 Assembly
+
+pragma solidity &gt;=0.4.16 &lt;0.9.0;
+contract InlineAssembly {
+// Defining function
+function add(uint256 a) public view returns (uint256 b) {
+assembly {
+let c := add(a, 16)
+mstore(0x80, c)
+{
+let d := add(sload(c), 12)
+b := d
+}
+b := add(b, c)
+}
+}
+}
+
+
+3) Events
+pragma solidity ^0.5.0;
+// Creating a contract
+contract eventExample {
+// Declaring state variables
+uint256 public value = 0;
+// Declaring an event
+event Increment(address owner);
+// Defining a function for logging event
+function getValue(uint256 _a, uint256 _b) public {
+emit Increment(msg.sender);
+value = _a + _b;
+}
+}
