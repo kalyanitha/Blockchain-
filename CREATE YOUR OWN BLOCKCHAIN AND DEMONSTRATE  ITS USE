@@ -1,6 +1,9 @@
-const SHA256 = require(&quot;crypto-js/sha256&quot;);
+Create a javascript folder with the following code in any folder of your choice.
+JavaScript Code
+
+const SHA256 = require("crypto-js/sha256");
 class Block {
-constructor(index, timestamp, data, previousHash = &quot;&quot;) {
+constructor(index, timestamp, data, previousHash = "") {
 this.index = index;
 this.timestamp = timestamp;
 this.data = data;
